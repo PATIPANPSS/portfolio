@@ -3,12 +3,12 @@ import Header from "../Header";
 import Navbar from "../Navbar";
 import Contact from "../Contact";
 
-const LeftSection = () => {
+const LeftSection = ({ navBarItems, currentSection }) => {
   return (
-    <div>
-      <div className="sticky top-14 grid grid-rows-[35%_40%_20%] h-[85vh]">
+    <div className='px-5'>
+      <div className="sticky top-14 grid gap-y-5 lg:grid-rows-[1fr_2fr_20%] lg:h-[82vh]">
         <Header />
-        <Navbar />
+        <Navbar navBarItems={navBarItems} currentSection={currentSection} />
         <Contact />
       </div>
     </div>

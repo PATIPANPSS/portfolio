@@ -10,7 +10,13 @@ export default defineConfig({
     react()
   ],
   theme: {
-    extend: [
-    ]
+    extend: {
+      colors: {
+        primaryTitle: "#76ABAE",
+        primaryContent: "#367579",
+        primarySubContent: "#EEEEEE",
+        primaryBg: "#222831",
+      }
+    }
   }
 })

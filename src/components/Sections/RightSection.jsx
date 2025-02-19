@@ -1,13 +1,36 @@
 import React from "react";
+import About from "../About";
+import ContentContainer from "../ContentContainer";
+import { data as experienceData } from "../../contents/experience";
+import { data as projectData } from "../../contents/project";
+import Footer from "./Footer";
 
-const RightSection = () => {
+const RightSection = ({ onInitial }) => {
   return (
-    <div>
-      <div>About</div>
-      <div className="mb-96">Experience</div>
-      <div className="mb-96">Experience</div>
-      <div className="mb-96">Experience</div>
-      <div className="mb-96">Experience</div>
+    <div className='grid gap-y-40 px-5'>
+      <About 
+        title="About"
+        onInitial={onInitial} 
+      />
+      <ContentContainer 
+        onInitial={onInitial}
+        title="Experience" 
+        data={experienceData} 
+      />
+
+      <ContentContainer
+        onInitial={onInitial}
+        title="Project" 
+        data={projectData} 
+      />
+
+      <ContentContainer
+        onInitial={onInitial}
+        title="Article" 
+        data={projectData} 
+      />
+
+      <Footer />
     </div>
   );
 };
