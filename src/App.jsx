@@ -9,7 +9,6 @@ function App() {
   const [currentSection, setCurrentSection] = useState("");
 
   const addSectionIds = (sectionId) => {
-    console.log(sectionIds);
     const elementId = document.getElementById(sectionId).id;
     setSectionIds((prev) => [...new Set([...prev, elementId])]);
 
@@ -24,13 +23,37 @@ function App() {
       return prev;
     }, []);
   };
+  
+  const handleScroll = () => {
+    for (let index = 0; index < sectionIds.length; index++) {
+      const element = sectionIds[index];
+      const elementOffsetTop =  document.getElementById(element).getClientRects()[0].y;
+      const height =  document.getElementById(element).getClientRects()[0].height * 0.5;
+      const viewHeight = window.innerHeight * 0.3;
+
+      if(elementOffsetTop <= 0) {
+        if((elementOffsetTop + height) > viewHeight) {
+          setCurrentSection(element)
+        }
+      } else if(elementOffsetTop > 0 && elementOffsetTop < viewHeight) {
+        setCurrentSection(element)
+      }
+    }
+  }
 
   useEffect(() => {
     if (sectionIds.length > 0) {
-      console.log(sectionIds[0])
       setCurrentSection(sectionIds[0]);
     }
   }, [sectionIds]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, [sectionIds])
 
   return (
     <div className="mt-14 mx-auto max-w-6xl grid gap-y-5 lg:grid-cols-[40%_60%]">

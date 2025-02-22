@@ -13,13 +13,11 @@ const Navbar = ({ navBarItems, currentSection }) => {
   const [isMouseEnter, setIsMouseEnter] = useState({});
 
   const handleClick = (sectionId) => {
-    console.log(sectionId);
     document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
   };
 
-  console.log(currentSection);
   return (
-    <div className="flex flex-col font-semibold mt-5">
+    <div className='hidden lg:flex flex-col font-semibold mt-5'>
       {navBarItems.map((event, item) => (
         <div
           key={`${event}-nav-${item}`}

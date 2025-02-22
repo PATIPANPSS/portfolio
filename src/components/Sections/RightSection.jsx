@@ -7,7 +7,7 @@ import Footer from "./Footer";
 
 const RightSection = ({ onInitial }) => {
   return (
-    <div className='grid gap-y-40 px-5'>
+    <div className='grid gap-y-14 lg:gap-y-40 px-5'>
       <About 
         title="About"
         onInitial={onInitial} 
